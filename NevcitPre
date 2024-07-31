@@ -10,6 +10,9 @@ p.Size = Vector3.new(100, 10, 100)
 p.Transparency = 0
 p.Anchored = true  
 p.Parent = workspace
+local Notify
+local Notify2
+local Avoid
 local item = {}
 local key = {}
 local monster = {}
@@ -307,7 +310,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
     Default = false,
     Callback = function(state)
 	if state then
-	    local Notify = workspace.ChildAdded:Connect(function(isnt)
+	    Notify = workspace.ChildAdded:Connect(function(isnt)
 	      if inst.Name == "Angler" then
 	        Fluent:Notify({
 	          Title = "MONSTER ANGLER HAS SPAWNED",
@@ -401,7 +404,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	        })
 	      end
 	    end)
-	   local Notify2 = workspace.Monsters.ChildAdded:Connect(function(inst)
+	   Notify2 = workspace.Monsters.ChildAdded:Connect(function(inst)
 	     if inst.Name == "WallDweller" then
 	       Fluent:Notify({
 	            Title = "MONSTER WALL DWELLER HAS SPAWNED",
@@ -425,7 +428,7 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
     Default = false,
     Callback = function(state)
 	if state then
-	    local Avoid = workspace.ChildAdded:Connect(function(inst)
+	    Avoid = workspace.ChildAdded:Connect(function(inst)
 	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
 	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
