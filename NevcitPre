@@ -401,7 +401,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	        })
 	      end
 	    end)
-	   workspace.Monsters.ChildAdded:Connect(function(inst)
+	   local Notify2 = workspace.Monsters.ChildAdded:Connect(function(inst)
 	     if inst.Name == "WallDweller" then
 	       Fluent:Notify({
 	            Title = "MONSTER WALL DWELLER HAS SPAWNED",
@@ -413,6 +413,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	    end)
 	else
 	    Notify:Disconnect()
+            Notify2:Disconnect()
         end
     end 
 })
@@ -423,8 +424,8 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
     Description = "",
     Default = false,
     Callback = function(state)
-	local Avoid = workspace.ChildAdded:Connect(function(inst)
-	    if state == true then
+	if state then
+	    local Avoid = workspace.ChildAdded:Connect(function(inst)
 	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
 	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
