@@ -687,6 +687,9 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 
+InterfaceManager:SetFolder("PressureHub")
+SaveManager:SetFolder("PressureHub/specific-game")
+
 InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
 
