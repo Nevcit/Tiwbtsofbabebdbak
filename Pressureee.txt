@@ -1,0 +1,809 @@
+for _, gui in ipairs(game:GetService("CoreGui"):GetChildren()) do
+    if gui.Name == "ScreenGui" then
+      gui:Destroy()
+    end
+end
+
+local item = {}
+local key = {}
+local monster = {}
+local trickster ={}
+local locker = {}
+local currency = {}
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local function applyitem(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitItem"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 50, 0, 20)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 250
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitItem"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "FlashBeacon" then
+    label.Text = "Flash Beacon"
+  elseif label.Text == "BigFlashBeacon" then
+    label.Text = "Flash Beacon"
+  elseif label.Text == "CodeBreacher" then
+    label.Text = "Code Breacher"
+  elseif label.Text == "WindupLight" then
+    label.Text = "Hand Cranked FlashLight"
+  elseif label.Text == "DefaultBattery1" then
+    label.Text = "Battery"
+  elseif label.Text == "DefaultBattery2" then
+    label.Text = "Battery"
+  elseif label.Text == "DefaultBattery3" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery1" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery2" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery3" then
+    label.Text = "Battery"
+  end
+  table.insert(item, text)
+end
+
+local function applyCurrency(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitCurrency"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 40, 0, 18)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 130
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitCurrency"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.fromRGB(249, 233, 153)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+ if label.Text == "5Currency" then
+   label.Text = "5$"
+ elseif label.Text == "10Currency" then
+   label.Text = "10$"
+ elseif label.Text == "15Currency" then
+   label.Text = "15$"
+ elseif label.Text == "25Currency" then
+   label.Text = "25$"
+ elseif label.Text == "50Currency" then
+   label.Text = "50$"
+ elseif label.Text == "100Currency" then
+   label.Text = "100$"
+ end
+  table.insert(currency, text)
+end
+
+local function applykey(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitKey"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 20)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 200
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitKey"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "NormalKeyCard" then
+    label.TextColor3 = Color3.fromRGB(128, 187, 219)
+    label.Text = "Normal KeyCard"
+  elseif label.Text == "InnerKeyCard" then
+    label.TextColor3 = Color3.fromRGB(107, 50, 124)
+    label.Text = "Inner KeyCard"
+  end
+  table.insert(key, text)
+end
+
+local function applymos(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitMons"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 100, 0, 50)
+	text.StudsOffset = Vector3.new(0, 2, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 300
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.Text = inst.Name
+	label.TextColor3 = Color3.fromRGB(196, 40, 28)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "RidgeAngler" then
+    label.Text = "Angler"
+  elseif label.Text == "RidgeBlitz" then
+    label.Text = "Blitz"
+  elseif label.Text == "RidgeChainsmoker" then
+    label.Text = "Chainsmoker"
+  elseif label.Text == "RidgePinkie" then
+    label.Text = "Pinkie"
+  elseif label.Text == "RidgeChainSmoker" then
+    label.Text = "Chainsmoker"
+  elseif label.Text == "RidgeFroger" then
+    label.Text = "Froger"
+  end
+	table.insert(monster, text)
+end
+
+local function applylocker(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitLocker"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 50)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 100
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitLocker"
+	label.Text = "Monster Locker"
+	label.TextColor3 = Color3.new(0.5, 0, 0.5) 
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+	table.insert(locker, text)
+end
+
+local function applytrickster(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitTrickster"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 50)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 200
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitTrickster"
+	label.Text = "FAKE ROOM"
+	label.TextColor3 = Color3.new(1, 1, 1) 
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+	table.insert(trickster, text)
+end
+  
+
+local Window = Fluent:CreateWindow({
+    Title = "GOA Hub",
+    SubTitle = "by Nevcit",
+    TabWidth = 80,
+    Size = UDim2.fromOffset(400, 350),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Darker",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+local Options = Fluent.Options
+
+-- Fluent provides Lucide Icons, they are optional
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Config = Window:AddTab({ Title = "Config", Icon = "settings" }),
+    Credit = Window:AddTab({ Title = "Credit", Icon = "bookmark" })
+}
+
+local Input = Tabs.Main:AddInput("Input", {
+    Title = "WalkSpeed",
+    Description = "",
+    Default = "16",
+    Placeholder = "Type here",
+    Numeric = true, -- Only allows numbers
+    Finished = false, -- Only calls callback when you press enter
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
+})
+
+local Toggle = Tabs.Main:AddToggle("FullBright", 
+{
+    Title = "Full Bright", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    local lighting = game.Lighting
+      lighting.Brightness = 2
+      lighting.ClockTime = 14
+		     lighting.FogEnd = 100000
+		     lighting.GlobalShadows = false
+		     lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+	else
+	    local lighting = game.Lighting
+      lighting.Brightness = 0.09
+      lighting.ClockTime = p
+		     lighting.FogEnd = 2000
+		     lighting.GlobalShadows = false
+		     lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+        end
+    end 
+})
+
+local Toggle = Tabs.Main:AddToggle("Instant Interact", 
+{
+    Title = "Instant Interact", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+	      if state == true then
+	        fireproximityprompt(prompt)
+	      end
+	    end)
+	else
+	    print("Toggle Off")
+        end
+    end 
+})
+
+local Toggle = Tabs.Main:AddToggle("Notify Monster", 
+{
+    Title = "Notify Monster", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    game:GetService("Workspace").ChildAdded:Connect(function(inst)
+	      if inst.Name == "Angler" then
+	        Fluent:Notify({
+	          Title = "MONSTER ANGLER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Chainsmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Blitz" then
+	        Fluent:Notify({
+	          Title = "MONSTER BLITZ HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Froger" then
+	        Fluent:Notify({
+	          Title = "MONSTER FROGER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Pinkie" then
+	        Fluent:Notify({
+	          Title = "MONSTER PINKIE HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeAngler" then
+	        Fluent:Notify({
+	          Title = "MONSTER ANGLER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeChainsmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeChainSmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeBlitz" then
+	        Fluent:Notify({
+	          Title = "MONSTER BLITZ HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeFroger" then
+	        Fluent:Notify({
+	          Title = "MONSTER FROGER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgePinkie" then
+	        Fluent:Notify({
+	          Title = "MONSTER PINKIE HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Pandemonium" then
+	        Fluent:Notify({
+	          Title = "MONSTER PANDEMONIUM HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "A-60" then
+	        Fluent:Notify({
+	          Title = "MONSTER A-60 HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      end
+	    end)
+	   workspace.Monsters.ChildAdded:Connect(function(inst)
+	     if inst.Name == "WallDweller" then
+	       Fluent:Notify({
+	            Title = "MONSTER WALL DWELLER HAS SPAWNED",
+             Content = "BECAREFULL",
+             SubContent = "", -- Optional
+	            Duration = 5 -- Set to nil to make the notification not disappear
+	          })
+	      end
+	    end)
+	else
+	    print("Toggle Off")
+        end
+    end 
+})
+
+local esp = Tabs.Main:AddSection("ESP")
+
+local Toggle = esp:AddToggle("ESP Item", 
+{
+    Title = "ESP Item", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    local tem = coroutine.create(function()
+	      workspace.Rooms.DescendantAdded:Connect(function(inst)
+	        if inst.ClassName == "Model" and inst.Name == "FlashBeacon" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "BigFlashBeacon" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "Flashlight" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "Medkit" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "Lantern" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "SmallLantern" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery1" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery2" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery3" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "AltBattery1" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "AltBattery2" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "AltBattery3" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "CodeBreacher" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "WindupLight" then
+	          wait()
+	          applyitem(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "Blacklight" then
+	          wait()
+	          applyitem(inst)
+	        end
+	      end)
+	    end)
+	  coroutine.resume(tem)
+	  for _, v in ipairs(workspace.Rooms:GetDescendants()) do
+	    if v.ClassName == "Model" and v.Name == "FlashBeacon" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "BigFlashBeacon" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "Flashlight" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "Medkit" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "Latern" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "DefaultBattery1" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "DefaultBattery2" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "DefaultBattery3" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "AltBattery1" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "AltBattery2" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "AltBattery3" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "CodeBreacher" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "WindupLight" then
+	      wait()
+	      applyitem(v)
+	    elseif v.ClassName == "Model" and v.Name == "Blacklight" then
+	      wait()
+	      applyitem(v)
+	    end
+	  end
+	   for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitItem" and v.MaxDistance >= 250 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitItem" then
+	        v:Destroy()
+	      end
+	    end
+    end
+  end
+})
+
+local Toggle = esp:AddToggle("ESP Currency/Money", 
+{
+    Title = "ESP Currency/Money", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    local cur = coroutine.create(function()
+	      workspace.Rooms.DescendantAdded:Connect(function(inst)
+	        if inst.ClassName == "Model" and inst.Name == "5Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "10Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "15Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "25Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "50Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        elseif inst.ClassName == "Model" and inst.Name == "100Currency" then
+	          wait()
+	          applyCurrency(inst)
+	        end
+	      end)
+	    end)
+	  coroutine.resume(cur)
+	  for _, v in ipairs(workspace.Rooms:GetDescendants()) do
+	    if v.ClassName == "Model" and v.Name == "5Currency" then
+	      wait()
+	      applyCurrency(v)
+	    elseif v.ClassName == "Model" and v.Name == "10Currency" then
+	      wait()
+	      applyCurrency(v)
+	    elseif v.ClassName == "Model" and v.Name == "15Currency" then
+	      wait()
+	      applyCurrency(v)
+	    elseif v.ClassName == "Model" and v.Name == "25Currency" then
+	      wait()
+	      applyCurrency(v)
+	    elseif v.ClassName == "Model" and v.Name == "50Currency" then
+	      wait()
+	      applyCurrency(v)
+	    elseif v.ClassName == "Model" and v.Name == "100Currency" then
+	      wait()
+	      applyCurrency(v)
+	    end
+	  end
+	  for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitCurrency" and v.MaxDistance >= 130 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitCurrency" then
+	        v:Destroy()
+	      end
+	    end
+    end
+  end
+})
+
+local Toggle = esp:AddToggle("ESP Monster Locker", 
+{
+    Title = "ESP Monster Locker", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    workspace.DescendantAdded:Connect(function(inst)
+	      if inst.Name == "MonsterLocker" and state == true then
+	        wait()
+	        applylocker(inst)
+	      end
+	    end)
+	  for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitLocker" and v.MaxDistance >= 100 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitLocker" then
+	        v:Destroy()
+	      end
+	    end
+    end
+  end
+})
+
+local Toggle = esp:AddToggle("ESP Monster", 
+{
+    Title = "ESP Monster", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    game:GetService("Workspace").ChildAdded:Connect(function(inst)
+	      if inst.Name == "Angler" then
+	        applymos(inst)
+	      elseif inst.Name == "Chainsmoker" then
+	        applymos(inst)
+	      elseif inst.Name == "Blitz" then
+	        applymos(inst)
+	      elseif inst.Name == "Froger" then
+	        applymos(inst)
+	      elseif inst.Name == "Pinkie" then
+	        applymos(inst)
+	      elseif inst.Name == "Pandemonium" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgeAngler" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgeChainsmoker" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgeChainSmoker" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgeBlitz" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgeFroger" then
+	        applymos(inst)
+	      elseif inst.Name == "RidgePinkie" then
+	        applymos(inst)
+	      elseif inst.Name == "Pandemonium" then
+	        applymos(inst)
+	      elseif inst.Name == "A-60" then
+	        applymos(inst)
+	      end
+	    end)
+	   workspace.Monsters.ChildAdded:Connect(function(inst)
+	     if inst.Name == "WallDweller" then
+	       applymos(inst)
+	    end)
+	     for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitMons" and v.MaxDistance >= 300 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitMons" then
+	        v:Destroy()
+	      end
+	    end
+	end
+    end
+})
+
+local Toggle = esp:AddToggle("ESP Trickster Room", 
+{
+    Title = "ESP Trickster Room", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    workspace.DescendantAdded:Connect(function(inst)
+	      if inst.Name == "TricksterRoom" and state == true then
+	        applytrickster(inst)
+	      end
+	    end)
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitTrickster" and v.Distance >= 200 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitTrickster" then
+	        v:Destroy()
+	      end
+	    end
+    end
+  end
+})
+
+local Toggle = esp:AddToggle("ESP Keycard", 
+{
+    Title = "ESP Keycard", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	  local keycor = coroutine.create(function()
+	    game:GetService("Workspace").Rooms.DescendantAdded:Connect(function(inst)
+	      if inst.ClassName == "Model" and inst:GetAttribute("InteractionType") == "KeyCard" then
+	        applykey(inst)
+	      end
+	      if inst.ClassName == "Model" and inst:GetAttribute("InteractionType") == "InnerKeyCard" then
+	        applykey(inst)
+	      end
+	    end)
+	  end)
+	  coroutine.resume(keycor)
+	  for _, v in ipairs(workspace.Rooms:GetDescendants()) do
+	    if v.ClassName == "Model" and v:GetAttribute("InteractionType") == "KeyCard" then
+	      applykey(v)
+	    end
+	    if v.ClassName == "Model" and v:GetAttribute("InteractionType") == "InnerKeyCard" then
+	      applykey(v)
+	    end
+	  end
+	  for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitKey" and v.MaxDistance >= 200 then
+	        v:Destroy()
+	      end
+	    end
+	else
+	    for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+	      if v.Name == "NevcitKey" then
+	        v:Destroy()
+	      end
+	    end
+	end
+	end
+})
+
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+
+-- and game configs in a separate folder per game
+InterfaceManager:SetFolder("PressureHub")
+SaveManager:SetFolder("PressureHub/specific-game")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Config)
+SaveManager:BuildConfigSection(Tabs.Config)
+
+Fluent:Notify({
+    Title = "Fluent",
+    Content = "The script has been loaded.",
+    Duration = 8
+})
+
+Tabs.Credit:AddButton({
+    Title = "Youtube Link",
+    Description = "",
+    Callback = function()
+        setclipboard("asem")
+    end
+})
+
+
+for _, gui in ipairs(game:GetService("CoreGui"):GetChildren()) do
+  if gui.Name == "patrickGui" then
+    gui:Destroy()
+  end
+end
+
+local frame = game:GetService("CoreGui").ScreenGui:GetChildren()[2]
+local gui = Instance.new("ScreenGui")
+gui.Name = "patrickGui"
+gui.Parent = game.CoreGui
+local TextButton = Instance.new("TextButton")
+-- Text
+TextButton.Text = "Close"
+TextButton.TextSize = 0
+-- Color
+TextButton.TextColor3 = Color3.new(1, 1, 1)
+TextButton.BackgroundColor3 = Color3.new(0, 0, 0)
+TextButton.BorderColor3 = Color3.new(1, 1, 1)
+-- thickness
+TextButton.BorderSizePixel = 0
+-- Text Code
+TextButton.Font = Enum.Font.Code
+-- Size
+TextButton.Size = UDim2.new(0.1, 0, 0.09, 0)
+-- Posisition
+TextButton.Position = UDim2.new(0, 0, 0.4, 0)
+TextButton.Parent = gui
+TextButton.Draggable = true
+local tl = Instance.new("TextLabel")
+tl.Parent = TextButton
+tl.BackgroundColor3 = Color3.new(255, 255, 255)
+tl.BorderColor3 = Color3.new(255, 255, 255)
+tl.BorderSizePixel = 0
+tl.Size = UDim2.new(0.5, 50, 1, 1)
+tl.Visible = true
+tl.ZIndex = 1
+tl.Text = "Close"
+tl.TextColor3 = Color3.new(0, 0, 0)
+tl.TextSize = 24
+tl.TextStrokeColor3 = Color3.new(0, 0, 0)
+tl.TextWrapped = true
+TextButton.MouseButton1Click:Connect (function()
+  if frame.Visible == true then
+    frame.Visible = false
+  elseif frame.Visible == false then
+    frame.Visible = true
+  end
+end)
+
+while wait() do
+  if frame.Visible == true then
+    tl.Text = "Close"
+  elseif frame.Visible == false then
+    tl.Text = "Open"
+  end
+end
+
