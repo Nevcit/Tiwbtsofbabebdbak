@@ -444,9 +444,9 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
 	      end
 	    else
 	      Avoid:Disconnect()
-            end
+	  end
 	end)
-    end 
+end 
 })
 
 local esp = Tabs.Main:AddSection("ESP")
