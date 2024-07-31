@@ -411,10 +411,13 @@ local Toggle = esp:AddToggle("ESP Item",
 	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery3" then
 	          wait()
 	          applyitem(inst)
-	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery4" then
+	        elseif inst.ClassName == "Model" and inst.Name == "AltBattery1" then
 	          wait()
 	          applyitem(inst)
-	        elseif inst.ClassName == "Model" and inst.Name == "DefaultBattery5" then
+	        elseif inst.ClassName == "Model" and inst.Name == "AltBattery2" then
+	          wait()
+	          applyitem(inst)
+                elseif inst.ClassName == "Model" and inst.Name == "AltBattery3" then
 	          wait()
 	          applyitem(inst)
 	        elseif inst.ClassName == "Model" and inst.Name == "CodeBreacher" then
