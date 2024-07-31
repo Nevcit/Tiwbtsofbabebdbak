@@ -309,8 +309,8 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
     Description = "",
     Default = false,
     Callback = function(state)
-	if state then
-	    Notify = workspace.ChildAdded:Connect(function(isnt)
+	Notify = workspace.ChildAdded:Connect(function(inst)
+	    if state then
 	      if inst.Name == "Angler" then
 	        Fluent:Notify({
 	          Title = "MONSTER ANGLER HAS SPAWNED",
@@ -396,6 +396,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	          Duration = 5 -- Set to nil to make the notification not disappear
 	        })
 	      elseif inst.Name == "A-60" then
+	        Fluent:Notify({
 	          Title = "MONSTER A-60 HAS SPAWNED",
 	          Content = "HIDE!!!",
 	          SubContent = "", -- Optional
