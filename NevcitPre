@@ -311,7 +311,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
     Default = false,
     Callback = function(state)
 	Notify = workspace.ChildAdded:Connect(function(inst)
-	    if state then
+	    if state == true then
 	      if inst.Name == "Angler" then
 	        Fluent:Notify({
 	          Title = "MONSTER ANGLER HAS SPAWNED",
@@ -404,12 +404,12 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	          Duration = 5 -- Set to nil to make the notification not disappear
 	        })
 	      end
-	    else
+	    elseif state == false then
 	      Notify:Disconnect()
 	    end
 	end)
 	Notify2 = workspace.Monsters.ChildAdded:Connect(function(inst)
-	  if state then
+	  if state == true then
 	    if inst.Name == "WallDweller" then
 	      Fluent:Notify({
 	        Title = "MONSTER WALL DWELLER HAS SPAWNED",
@@ -418,7 +418,7 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	        Duration = 5 -- Set to nil to make the notification not disappear
 	      })
 	    end
-	  else
+	  elseif state == false then
 	    Notify2:Disconnect()
 	  end
 	end)
@@ -432,7 +432,7 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
     Default = false,
     Callback = function(state)
 	Avoid = workspace.ChildAdded:Connect(function(inst)
-	    if state then
+	    if state == true then
 	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
 	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
@@ -442,7 +442,7 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
 	      tp:Disconnect()
 	      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
 	      end
-	    else
+	    elseif state == false then
 	      Avoid:Disconnect()
 	  end
 	end)
