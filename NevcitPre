@@ -4,6 +4,12 @@ for _, gui in ipairs(game:GetService("CoreGui"):GetChildren()) do
     end
 end
 
+local p = Instance.new("Part")
+p.Position = Vector3.new(-34, 1494, -1120)
+p.Size = Vector3.new(100, 10, 100)
+p.Transparency = 0
+p.Anchored = true  
+p.Parent = workspace
 local item = {}
 local key = {}
 local monster = {}
@@ -409,6 +415,30 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	    print("Toggle Off")
         end
     end 
+})
+
+local Toggle = Tabs.Main:AddToggle("Avoid Monster", 
+{
+    Title = "Avoid Monster (Not Including A-60)", 
+    Description = "",
+    Default = false,
+    Callback = function(state)
+	if state then
+	    workspace.ChildAdded:Connect(function(inst)
+	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
+	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
+	        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Position)
+	      end)
+	      inst.Destroying:Wait()
+	      tp:Disconnect()
+	      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
+	      end
+	    end)
+	else
+	  print("what????")
+    end
+  end
 })
 
 local esp = Tabs.Main:AddSection("ESP")
