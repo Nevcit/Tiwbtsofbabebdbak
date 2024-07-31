@@ -306,8 +306,8 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
     Description = "",
     Default = false,
     Callback = function(state)
-	game:GetService("Workspace").ChildAdded:Connect(function(inst)
-	    if state == true then
+	if state then
+	    local Notify = workspace.ChildAdded:Connect(function(isnt)
 	      if inst.Name == "Angler" then
 	        Fluent:Notify({
 	          Title = "MONSTER ANGLER HAS SPAWNED",
@@ -411,6 +411,9 @@ local Toggle = Tabs.Main:AddToggle("Notify Monster",
 	          })
 	      end
 	    end)
+	else
+	    Notify:Disconnect()
+        end
     end 
 })
 
@@ -420,7 +423,7 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
     Description = "",
     Default = false,
     Callback = function(state)
-	workspace.ChildAdded:Connect(function(inst)
+	local Avoid = workspace.ChildAdded:Connect(function(inst)
 	    if state == true then
 	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
 	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
@@ -432,7 +435,10 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
 	      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
 	      end
 	    end)
-  end
+	else
+	    Avoid:Disconnect()
+        end
+    end 
 })
 
 local esp = Tabs.Main:AddSection("ESP")
