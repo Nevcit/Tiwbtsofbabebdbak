@@ -10,6 +10,7 @@ p.Size = Vector3.new(100, 10, 100)
 p.Transparency = 0
 p.Anchored = true  
 p.Parent = workspace
+local Avoid
 local Notify
 local Notify2
 local Avoid
@@ -430,8 +431,8 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
     Description = "",
     Default = false,
     Callback = function(state)
-	if state then
-	    Avoid = workspace.ChildAdded:Connect(function(inst)
+	Avoid = workspace.ChildAdded:Connect(function(inst)
+	    if state then
 	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
 	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
@@ -441,10 +442,10 @@ local Toggle = Tabs.Main:AddToggle("Avoid Monster",
 	      tp:Disconnect()
 	      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
 	      end
-	    end)
-	else
-	    Avoid:Disconnect()
-        end
+	    else
+	      Avoid:Disconnect()
+            end
+	end)
     end 
 })
 
