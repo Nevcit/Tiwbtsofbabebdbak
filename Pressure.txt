@@ -20,7 +20,7 @@ local function applyitem(inst)
 	text.StudsOffset = Vector3.new(0, 0, 0)
 	text.AlwaysOnTop = true
 	text.Parent = game.CoreGui
- text.MaxDistance = 250
+ text.MaxDistance = 200
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 1, 0)
 label.Name = "NevcitItem"
@@ -38,6 +38,8 @@ label.Name = "NevcitItem"
     label.Text = "Code Breacher"
   elseif label.Text == "WindupLight" then
     label.Text = "Hand Cranked FlashLight"
+  elseif label.Text == "SmallLantern" then
+    label.Text = "Lantern"
   elseif label.Text == "DefaultBattery1" then
     label.Text = "Battery"
   elseif label.Text == "DefaultBattery2" then
@@ -62,7 +64,7 @@ local function applyCurrency(inst)
 	text.StudsOffset = Vector3.new(0, 0, 0)
 	text.AlwaysOnTop = true
 	text.Parent = game.CoreGui
- text.MaxDistance = 150
+ text.MaxDistance = 130
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 1, 0)
 label.Name = "NevcitCurrency"
@@ -144,7 +146,7 @@ local function applylocker(inst)
 	text.StudsOffset = Vector3.new(0, 0, 0)
 	text.AlwaysOnTop = true
 	text.Parent = game.CoreGui
- text.MaxDistance = 150
+ text.MaxDistance = 80
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 1, 0)
 label.Name = "NevcitLocker"
