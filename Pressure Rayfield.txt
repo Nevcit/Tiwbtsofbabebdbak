@@ -1,0 +1,442 @@
+for _, gui in ipairs(game:GetService("CoreGui"):GetChildren()) do
+    if gui.Name == "ScreenGui" then
+      gui:Destroy()
+    end
+end
+
+local instant
+local avoid
+local notify
+local notify2
+local p = Instance.new("Part")
+p.Position = Vector3.new(-34, 1494, -1120)
+p.Size = Vector3.new(100, 10, 100)
+p.Transparency = 0
+p.Anchored = true  
+p.Parent = workspace
+local item = {}
+local key = {}
+local monster = {}
+local trickster ={}
+local locker = {}
+local currency = {}
+getgenv().SecureMode = true
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/Draggable/main/Draggable.txt"))()
+
+local function applycable(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitCable"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 20)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitCable"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "ProxyPart" then
+    label.TextColor3 = Color3.fromRGB(128, 187, 219)
+    label.Text = "Broken Cable"
+  end
+  table.insert(key, text)
+end
+
+local function applyitem(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitItem"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 50, 0, 20)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 250
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitItem"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "FlashBeacon" then
+    label.Text = "Flash Beacon"
+  elseif label.Text == "SmallLantern" then
+    label.Text = "Lantern"
+  elseif label.Text == "BigFlashBeacon" then
+    label.Text = "Flash Beacon"
+  elseif label.Text == "CodeBreacher" then
+    label.Text = "Code Breacher"
+  elseif label.Text == "WindupLight" then
+    label.Text = "Hand Cranked FlashLight"
+  elseif label.Text == "DefaultBattery1" then
+    label.Text = "Battery"
+  elseif label.Text == "DefaultBattery2" then
+    label.Text = "Battery"
+  elseif label.Text == "DefaultBattery3" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery1" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery2" then
+    label.Text = "Battery"
+  elseif label.Text == "AltBattery3" then
+    label.Text = "Battery"
+  end
+  table.insert(item, text)
+end
+
+local function applyCurrency(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitCurrency"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 40, 0, 18)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 130
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitCurrency"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.fromRGB(249, 233, 153)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+ if label.Text == "5Currency" then
+   label.Text = "5$"
+ elseif label.Text == "10Currency" then
+   label.Text = "10$"
+ elseif label.Text == "15Currency" then
+   label.Text = "15$"
+ elseif label.Text == "25Currency" then
+   label.Text = "25$"
+ elseif label.Text == "50Currency" then
+   label.Text = "50$"
+ elseif label.Text == "100Currency" then
+   label.Text = "100$"
+ end
+  table.insert(currency, text)
+end
+
+local function applykey(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitKey"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 20)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 200
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitKey"
+	label.Text = inst.Name
+	label.TextColor3 = Color3.new(1, 1, 1)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "NormalKeyCard" then
+    label.TextColor3 = Color3.fromRGB(128, 187, 219)
+    label.Text = "Normal KeyCard"
+  elseif label.Text == "InnerKeyCard" then
+    label.TextColor3 = Color3.fromRGB(107, 50, 124)
+    label.Text = "Inner KeyCard"
+  elseif label.Text == "RidgeKeyCard" then
+    label.TextColor3 = Color3.fromRGB(160, 82, 45)
+    label.Text = "Ridge KeyCard"
+  end
+  table.insert(key, text)
+end
+
+local function applymos(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitMons"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 100, 0, 50)
+	text.StudsOffset = Vector3.new(0, 2, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 300
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.Text = inst.Name
+	label.TextColor3 = Color3.fromRGB(255, 0, 0)
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+  if label.Text == "RidgeAngler" then
+    label.Text = "Angler"
+  elseif label.Text == "RidgeBlitz" then
+    label.Text = "Blitz"
+  elseif label.Text == "RidgeChainsmoker" then
+    label.Text = "Chainsmoker"
+  elseif label.Text == "RidgePinkie" then
+    label.Text = "Pinkie"
+  elseif label.Text == "RidgeChainSmoker" then
+    label.Text = "Chainsmoker"
+  elseif label.Text == "RidgeFroger" then
+    label.Text = "Froger"
+  end
+	table.insert(monster, text)
+end
+
+local function applylocker(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitLocker"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 50)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 100
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitLocker"
+	label.Text = "Monster Locker"
+	label.TextColor3 = Color3.fromRGB(196, 40, 28) 
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+	table.insert(locker, text)
+end
+
+local function applytrickster(inst)
+	local text = Instance.new("BillboardGui")
+	text.Name = "NevcitTrickster"
+	text.Adornee = inst
+	text.Size = UDim2.new(0, 80, 0, 50)
+	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.AlwaysOnTop = true
+	text.Parent = game.CoreGui
+ text.MaxDistance = 200
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+label.Name = "NevcitTrickster"
+	label.Text = "FAKE ROOM"
+	label.TextColor3 = Color3.new(1, 1, 1) 
+	label.BackgroundTransparency = 1
+	label.TextStrokeTransparency = 0
+	label.TextScaled = true
+	label.Parent = text
+	table.insert(trickster, text)
+end
+
+local Window = Rayfield:CreateWindow({
+   Name = "GOA Hub",
+   LoadingTitle = "Welcome To GOA HUB",
+   LoadingSubtitle = "by Nevcit",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "Pressure", -- Create a custom folder for your hub/game
+      FileName = "Saving"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+
+local Main = Window:CreateTab("Main", 4483362458) -- Title, Image
+
+local Toggle = Main:CreateToggle({
+   Name = "Full Bright",
+   CurrentValue = false,
+   Flag = "Bright", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     if Value then
+      local lighting = game.Lighting
+      lighting.Brightness = 2
+      lighting.ClockTime = 14
+		     lighting.FogEnd = 100000
+		     lighting.GlobalShadows = false
+		     lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+     else
+	     local lighting = game.Lighting
+      lighting.Brightness = 0.09
+      lighting.ClockTime = p
+		     lighting.FogEnd = 2000
+		     lighting.GlobalShadows = false
+		     lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+     end
+   end,
+})
+
+local Toggle = Main:CreateToggle({
+   Name = "Instant Interact",
+   CurrentValue = false,
+   Flag = "Instant", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     if Value == true then
+      instant = game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+        fireproximityprompt(prompt)
+      end
+	    end)
+     if Value == false then
+       instant:Disconnect()
+     end
+   end,
+})
+
+local Toggle = Main:CreateToggle({
+   Name = "Notify Monster",
+   CurrentValue = false,
+   Flag = "Notify", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     if Value == true then
+       notify = game:GetService("Workspace").ChildAdded:Connect(function(inst)
+       if inst.Name == "Angler" then
+	        Fluent:Notify({
+	          Title = "MONSTER ANGLER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Chainsmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Blitz" then
+	        Fluent:Notify({
+	          Title = "MONSTER BLITZ HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Froger" then
+	        Fluent:Notify({
+	          Title = "MONSTER FROGER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Pinkie" then
+	        Fluent:Notify({
+	          Title = "MONSTER PINKIE HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeAngler" then
+	        Fluent:Notify({
+	          Title = "MONSTER ANGLER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeChainsmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeChainSmoker" then
+	        Fluent:Notify({
+	          Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeBlitz" then
+	        Fluent:Notify({
+	          Title = "MONSTER BLITZ HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgeFroger" then
+	        Fluent:Notify({
+	          Title = "MONSTER FROGER HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "RidgePinkie" then
+	        Fluent:Notify({
+	          Title = "MONSTER PINKIE HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "Pandemonium" then
+	        Fluent:Notify({
+	          Title = "MONSTER PANDEMONIUM HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      elseif inst.Name == "A-60" then
+	        Fluent:Notify({
+	          Title = "MONSTER A-60 HAS SPAWNED",
+	          Content = "HIDE!!!",
+	          SubContent = "", -- Optional
+	          Duration = 5 -- Set to nil to make the notification not disappear
+	        })
+	      end
+	    end)
+	   notify2 = workspace.Monsters.ChildAdded:Connect(function(inst)
+	     if inst.Name == "WallDweller" then
+	       Fluent:Notify({
+	            Title = "MONSTER WALL DWELLER HAS SPAWNED",
+             Content = "BECAREFULL",
+             SubContent = "", -- Optional
+	            Duration = 5 -- Set to nil to make the notification not disappear
+	          })
+	      end
+	    end)
+     end
+     if Value == false then
+       notify:Disconnect()
+       notify2:Disconnect()
+     end
+   end,
+})
+
+local Toggle = Main:CreateToggle({
+   Name = "Avoid Monster",
+   CurrentValue = false,
+   Flag = "Avoid", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     if Value == true then
+      avoid = workspace.ChildAdded:Connect(function(inst)
+	      if inst.Name == "Angler" or inst.Name == "Pinkie" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgePinkie" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" then
+	      local oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+	      local tp = game:GetService("RunService").Heartbeat:Connect(function()
+	        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(p.Position)
+	      end)
+	      inst.Destroying:Wait()
+	      tp:Disconnect()
+	      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
+	      end
+	    end)
+     end
+     if Value == false then
+       avoid:Disconnect()
+     end
+   end,
+})
