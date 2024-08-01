@@ -820,7 +820,6 @@ local Toggle = esp:CreateToggle({
    Flag = "Generator", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
      if Value == true then
-       for if Value == true then
        for i, v in pairs(game:GetService("Workspace").Rooms.SearchlightsEncounter.Interactables:GetDescendants()) do
          if v.ClassName == "Model" and v.Name == "Model" and v.Parent == "EncounterGenerator" then
              applygenerator(v)
