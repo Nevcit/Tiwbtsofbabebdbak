@@ -702,7 +702,7 @@ local Toggle = Main:CreateToggle({
    Callback = function(Value)
      if Value == true then
        monster = game:GetService("Workspace").ChildAdded:Connect(function(inst)
-         if inst.Name == "Angler" or "Chainsmoker" or "Blitz" or "Froger" or "Pandemonium" or "RidgeAngler" or "RidgeChainsmoker" or "RidgeBlitz" or "RidgeFroger" or "RidgeChainSmoker" then
+         if inst.Name == "Angler" or inst.Name == "Chainsmoker" or inst.Name == "Blitz" or inst.Name == "Froger" or inst.Name == "Pandemonium" or inst.Name == "RidgeAngler" or inst.Name == "RidgeChainsmoker" or inst.Name == "RidgeBlitz" or inst.Name == "RidgeFroger" or inst.Name == "RidgeChainSmoker" then
            applymos(inst)           
          end
        end)
