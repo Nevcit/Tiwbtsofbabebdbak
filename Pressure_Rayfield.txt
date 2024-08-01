@@ -450,7 +450,7 @@ local Toggle = Main:CreateToggle({
 
 local esp = Main:CreateSection("ESP")
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Item",
    CurrentValue = false,
    Flag = "item", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -569,7 +569,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Money",
    CurrentValue = false,
    Flag = "Money", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -637,7 +637,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Trickster Room",
    CurrentValue = false,
    Flag = "trickster", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -667,7 +667,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Monster Locker",
    CurrentValue = false,
    Flag = "Locker", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -695,7 +695,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Monster",
    CurrentValue = false,
    Flag = "Monster", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -729,7 +729,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Keycard",
    CurrentValue = false,
    Flag = "Keycard", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -771,7 +771,7 @@ local Toggle = esp:CreateToggle({
    end,
 })
 
-local Toggle = esp:CreateToggle({
+local Toggle = Main:CreateToggle({
    Name = "ESP Broken Cables",
    CurrentValue = false,
    Flag = "Cables", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
