@@ -31,10 +31,10 @@ local function applygenerator(inst)
 	text.Name = "NevcitGenerator"
 	text.Adornee = inst
 	text.Size = UDim2.new(0, 80, 0, 20)
-	text.StudsOffset = Vector3.new(0, 0, 0)
+	text.StudsOffset = Vector3.new(0, -7, 0)
 	text.AlwaysOnTop = true
 	text.Parent = game.CoreGui
- text.MaxDistance = 400
+ text.MaxDistance = 500
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 1, 0)
 label.Name = "NevcitGenerator"
@@ -820,12 +820,12 @@ local Toggle = esp:CreateToggle({
    Flag = "Generator", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
      if Value == true then
-       for i, v in pairs(game:GetService("Workspace").Rooms.SearchlightsEncounter:GetDescendants()) do
-         if v:FindFirstChild("Model") and v.ClassName == "Model" and v.Name == "EncounterGenerator" then
+       for i, v in pairs(game:GetService("Workspace").Rooms:GetDescendants()) do
+         if v.ClassName == "Model" and v.Name == "EncounterGenerator" then
              applygenerator(v)
          end
        end
-       for i, v in pairs(game:GetService("Workspace").Rooms.SearchlightsEncounter:GetDescendants()) do
+       for i, v in pairs(game:GetService("Workspace").Rooms:GetDescendants()) do
          if v:FindFirstChild("Fixed") and v.ClassName == "Model" and v.Name == "EncounterGenerator" then
            if v.Fixed.Value == 100 then
              for i,v in pairs(game:GetService("CoreGui"):GetChildren()) do
