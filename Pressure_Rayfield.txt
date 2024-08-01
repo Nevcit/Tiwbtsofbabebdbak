@@ -298,7 +298,6 @@ local Toggle = Main:CreateToggle({
      if Value == true then
       instant = game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
         fireproximityprompt(prompt)
-      end
 	    end)
    end
      if Value == false then
