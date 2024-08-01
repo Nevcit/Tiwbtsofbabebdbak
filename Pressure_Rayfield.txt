@@ -402,27 +402,102 @@ local Toggle = Main:CreateToggle({
              Title = "MONSTER FROGER HAS SPAWNED",
              Content = "BECAREFULL",
              Duration = 6.5,
+local Toggle = Main:CreateToggle({
+   Name = "Notify Monster",
+   CurrentValue = false,
+   Flag = "Notify", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     if Value == true then
+       notify = game:GetService("Workspace").ChildAdded:Connect(function(inst)
+         if inst.Name == "Angler" then
+           Rayfield:Notify({
+             Title = "MONSTER ANGLER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "Chainsmoker" then
+           Rayfield:Notify({
+             Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "Blitz" then
+           Rayfield:Notify({
+             Title = "MONSTER BLITZ HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "Froger" then
+           Rayfield:Notify({
+             Title = "MONSTER FROGER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "Pinkie" then
+           Rayfield:Notify({
+             Title = "MONSTER PINKIE HAS SPAWNED",
+             Content = "",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "RidgeAngler" then
+           Rayfield:Notify({
+             Title = "MONSTER ANGLER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "RidgeChainsmoker" then	
+           Rayfield:Notify({
+             Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "RidgeChainSmoker" then
+           Rayfield:Notify({
+             Title = "MONSTER CHAINSMOKER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "RidgeBlitz" then
+           Rayfield:Notify({
+             Title = "MONSTER BLITZ HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
+             Image = 4483362458,
+           })
+         elseif inst.Name == "RidgeFroger" then
+           Rayfield:Notify({
+             Title = "MONSTER FROGER HAS SPAWNED",
+             Content = "HIDE!!!",
+             Duration = 4,
              Image = 4483362458,
            })
          elseif inst.Name == "RidgePinkie" then
            Rayfield:Notify({
              Title = "MONSTER PINKIE HAS SPAWNED",
-             Content = "BECAREFULL",
-             Duration = 6.5,
+             Content = "HIDE!!!",
+             Duration = 4,
              Image = 4483362458,
            })
          elseif inst.Name == "Pandemonium" then
            Rayfield:Notify({
              Title = "MONSTER PANDEMONIUM HAS SPAWNED",
-             Content = "BECAREFULL",
-             Duration = 6.5,
+             Content = "HIDE!!!",
+             Duration = 4,
              Image = 4483362458,
            })
          elseif inst.Name == "A-60" then
            Rayfield:Notify({
              Title = "MONSTER A-60 HAS SPAWNED",
-             Content = "BECAREFULL",
-             Duration = 6.5,
+             Content = "HIDE!!!",
+             Duration = 4,
              Image = 4483362458,
            })
 	      end
@@ -432,11 +507,11 @@ local Toggle = Main:CreateToggle({
            Rayfield:Notify({
              Title = "MONSTER WALL DWELLLER HAS SPAWNED",
              Content = "BECAREFULL",
-             Duration = 6.5,
+             Duration = 4,
              Image = 4483362458,
            })
-	      end
-	    end)
+         end
+       end)
      end
      if Value == false then
        notify:Disconnect()
