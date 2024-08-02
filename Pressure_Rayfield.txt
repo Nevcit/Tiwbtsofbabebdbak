@@ -24,7 +24,7 @@ local trickster ={}
 local locker = {}
 local currency = {}
 getgenv().SecureMode = true
-local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/Draggable/main/Draggable.txt"))()
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nevcit/Pressure/main/Rayfield"))()
 
 local function applygenerator(inst)
 	local text = Instance.new("BillboardGui")
